@@ -7,6 +7,10 @@ public class Author {
         this.biography = biography;
     }
 
+    public boolean compare(Author author){
+        return (this.name.equals(author.name)) && (this.biography.equals(author.biography));
+    }
+
     @Override
     public String toString() {
         return name;

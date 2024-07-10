@@ -9,18 +9,35 @@ public class Member {
         borrowedBooks = new Book[libraryCard.GetMaxNumberOfBooks()];
     }
 
+    /**
+     * function gets a book and check if the user is borrowing it
+     * @param compareBook - the book
+     * @return true/false is the member is indeed borrowing the book
+     */
+    public boolean isBorrowingBook(Book compareBook){
+        for(Book book : borrowedBooks){
+            if(book.equals(compareBook)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Name: " + this.name + ", Checked-out books: \n" + ListOfBooks();
     }
 
+    /**
+     *
+     * @return a string holding all books the member borrowed
+     */
     private String ListOfBooks(){
         String res = "";
-        if(borrowedBooks[0] == null){
-            return "";
-        }
-        for(int i = 0; i < borrowedBooks.length && borrowedBooks[i] != null; i++){
-            res += borrowedBooks[i].toString() + "\n";
+        for (Book borrowedBook : borrowedBooks) {
+            if (borrowedBook != null) {
+                res += borrowedBook.toString() + "\n";
+            }
         }
         return res;
     }
